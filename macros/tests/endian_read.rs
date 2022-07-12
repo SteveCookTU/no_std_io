@@ -323,9 +323,7 @@ mod backtrace {
 
     #[test]
     fn should_read_nested_le() {
-        let bytes = vec![
-            0x44, 0x33, 0x22, 0x11, 0xdd, 0xcc, 0xbb, 0xaa,
-        ];
+        let bytes = vec![0x44, 0x33, 0x22, 0x11, 0xdd, 0xcc, 0xbb, 0xaa];
         let result: NestedContainer<BacktraceTest> =
             bytes.read_le(0).expect("Read should have worked");
         let expected = NestedContainer {
@@ -341,9 +339,7 @@ mod backtrace {
 
     #[test]
     fn should_read_nested_be() {
-        let bytes = vec![
-            0x11, 0x22, 0x33, 0x44, 0xaa, 0xbb, 0xcc, 0xdd
-        ];
+        let bytes = vec![0x11, 0x22, 0x33, 0x44, 0xaa, 0xbb, 0xcc, 0xdd];
         let result: NestedContainer<BacktraceTest> =
             bytes.read_be(0).expect("Read should have worked");
         let expected = NestedContainer {
@@ -359,10 +355,9 @@ mod backtrace {
 
     #[test]
     fn should_read_dynamic_size_le() {
-        let bytes = vec![
-            0x02, 0xdd, 0xcc, 0xbb, 0xaa, 0x44, 0x33, 0x22, 0x11
-        ];
-        let result: ListContainer<BacktraceTest> = bytes.read_le(0).expect("Write should have worked");
+        let bytes = vec![0x02, 0xdd, 0xcc, 0xbb, 0xaa, 0x44, 0x33, 0x22, 0x11];
+        let result: ListContainer<BacktraceTest> =
+            bytes.read_le(0).expect("Write should have worked");
         let expected = ListContainer::<BacktraceTest>(vec![
             BacktraceTest {
                 first: 0xaabbccdd,
@@ -379,10 +374,9 @@ mod backtrace {
 
     #[test]
     fn should_read_dynamic_size_be() {
-        let bytes = vec![
-            0x02, 0xaa, 0xbb, 0xcc, 0xdd, 0x11, 0x22, 0x33, 0x44
-        ];
-        let result: ListContainer<BacktraceTest> = bytes.read_be(0).expect("Write should have worked");
+        let bytes = vec![0x02, 0xaa, 0xbb, 0xcc, 0xdd, 0x11, 0x22, 0x33, 0x44];
+        let result: ListContainer<BacktraceTest> =
+            bytes.read_be(0).expect("Write should have worked");
         let expected = ListContainer::<BacktraceTest>(vec![
             BacktraceTest {
                 first: 0xaabbccdd,
